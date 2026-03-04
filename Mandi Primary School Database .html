@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mandi Primary School Login</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+/* BACKGROUND IMAGE — change link */
+background:url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b") no-repeat center center/cover;
+}
+
+.login-box{
+background:rgba(255,255,255,0.95);
+padding:30px;
+border-radius:10px;
+width:320px;
+text-align:center;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+.logo{
+width:80px;
+margin-bottom:10px;
+}
+
+input, select, button{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+background:#2c7be5;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#1a5fd0;
+}
+
+.error{
+color:red;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<!-- SCHOOL LOGO — replace image -->
+<img src="do.fw.png" class="logo" alt="Mandi Primary School Logo">
+
+<h3>Mandi Primary School</h3>
+<p>Centralized database system that managing student records, assessments, reports, and administration securely </p>
+
+<select id="username">
+<option value="">-- Select User --</option>
+<option value="Mr.Rodney.Weno-head Teacher">Mr.Rodney.Weno-Head Teacher</option>
+<option value="Ms.Isabella.Wundu">Ms.Isabella.Wundu</option>
+<option value="Ms.Rebecca.Balthazar">Ms.Rebecca.Balthazar</option>
+<option value="Ms.Nina.Polly">Ms.Nina.Polly</option>
+<option value="Ms.Daphie.Mulavasa">Ms.Daphie.Mulavasa</option>
+<option value="Ms.Dora.Kiak">Ms.Dora.Kiak</option>
+<option value="Mrs.Ruth.A.Mespuk">Mrs.Ruth.A.Mespuk</option>
+<option value="Mr.Ivan.Mespuk">Mr.Ivan.Mespuk</option>
+<option value="Mrs.Lydia.B.Wapi">Mrs.Lydia.B.Wapi</option>
+<option value="Ms.Rosalia Maimao">Ms.Rosalia Maimao</option>
+<option value="Ms.Grace.B.Wora">Ms.Grace.B.Wora</option>
+<option value="Mr.Israel.Wora">Mr.Israel.Wora</option>
+<option value="Ms.Lisa.Papu">Ms.Lisa.Papu</option>
+</select>
+
+<input type="password" id="password" placeholder="Enter Password">
+
+<button onclick="login()">Login</button>
+<div class="dev">Developed by:Nicodemas Mainga-Vice Chairman</div>
+
+</div>
+
+<script>
+
+/* USERS + PASSWORDS + GOOGLE SHEET LINKS */
+const users = {
+"Ms.Isabella.Wundu": { password: "Jhudiell", sheet: "https://sites.google.com/view/mandiprimaryschool/prepatory" },
+"Ms.Rebecca.Balthazar": { password: "oomonupoo", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-1a" },
+"Ms.Nina.Polly": { password: "wama1983", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-1b" },
+"Ms.Daphie.Mulavasa": { password: "17fed2023", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-2a" },
+"Ms.Dora.Kiak": { password: "mitchelle2015", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-2b" },
+"Mrs.Ruth.A.Mespuk": { password: "moses2026", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-3a" },
+"Mr.Ivan.Mespuk": { password: "mespuk2026", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-3b" },
+"Mrs.Lydia.B.Wapi": { password: "lbw2135", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-4b" },
+"Ms.Rosalia Maimao": { password: "123satofali", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-4a" },
+"Ms.Grace.B.Wora": { password: "1508", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-5" },
+"Mr.Israel.Wora": { password: "wora@2026", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-6a" },
+"Ms.Lisa.Papu": { password: "pass12", sheet: "https://sites.google.com/view/mandiprimaryschool/grade-6b" }
+};
+
+function login(){
+const username = document.getElementById("username").value;
+const password = document.getElementById("password").value;
+const error = document.getElementById("error");
+
+if(username === ""){
+error.innerText = "Please select username";
+return;
+}
+
+if(!users[username] || users[username].password !== password){
+error.innerText = "Wrong password. Try again.";
+return;
+}
+
+/* open user's Google Sheet */
+window.location.href = users[username].sheet;
+}
+
+</script>
+
+</body>
+</html>
